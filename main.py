@@ -1,4 +1,4 @@
-import pygame, sys, itertools, cc, cp, random
+import pygame, cc, cp, random
 from pygame.locals import *
 
 def draw_board(screen):
@@ -26,10 +26,10 @@ def get_resorces():
                     pass
     return resources
 
-def select_player():
+def select_player(people):
     mouse_pos =  pygame.mouse.get_pos()
-    for person in cc.people:
-        if person in cc.people.get_sprites_at(mouse_pos):
+    for person in people:
+        if person in people.get_sprites_at(mouse_pos):
             player = person
     return player
 
@@ -38,9 +38,13 @@ def main():
     pygame.display.set_caption('World')
     clock = pygame.time.Clock()
 
+    person = cp.Player()
+    people = pygame.sprite.Group()
+    people.add(person)
+
     background = draw_board(screen)
     resources = get_resorces()
-    player = cc.people.get_sprite(0)
+    ##player = people.get_sprite(0)
     done = False
 
     while not done:
@@ -48,7 +52,7 @@ def main():
             if event.type == pygame.QUIT:
                 done = True
             if event.type == pygame.MOUSEBUTTONDOWN:
-                player = select_player()
+                player = select_player(people)
             elif event.type == KEYDOWN:
                 if event.key == K_RIGHT and player.row < cc.SCREEN_SIZE - 1:
                     player.row += 1
@@ -59,9 +63,10 @@ def main():
                 if event.key == K_UP and player.column > 0:
                     player.column -= 1
 
+        ##selected_resources = pygame.sprite.groupcollide(people, resources, dokill2)
         screen.blit(background, (0, 0))
         resources.draw(screen)
-        cc.people.draw(screen)
+        people.draw(screen)
         pygame.display.update()
         clock.tick(60)
 

@@ -9,7 +9,9 @@ class GameObject(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
 
 class Player(GameObject):
-        def __init__(self, image):
+        def __init__(self):
+            image = pygame.image.load('char.png')
+            image = pygame.transform.scale(image, (50, 75))
             super().__init__(image, 0, 0)
             self.player = False
 
@@ -22,10 +24,3 @@ class Resources(GameObject):
 
 def cr_to_win(num):
     return (num * cc.TILE_SIZE) + cc.OFFSET
-
-image = pygame.image.load('char.png')
-image = pygame.transform.scale(image, (50, 75))
-
-person = cp.Player(image)
-people = pygame.sprite.Group()
-people.add(person)
