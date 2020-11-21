@@ -22,3 +22,10 @@ class Resources(GameObject):
 
 def cr_to_win(num):
     return (num * cc.TILE_SIZE) + cc.OFFSET
+
+image = pygame.image.load('char.png')
+image = pygame.transform.scale(image, (50, 75))
+
+person = cp.Player(image)
+people = pygame.sprite.Group()
+people.add(person)

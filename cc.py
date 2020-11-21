@@ -1,4 +1,4 @@
-import pygame, os, cp
+import pygame, os
 #set up some constants
 
 TILE_SIZE = 15
@@ -11,14 +11,6 @@ DARK_IMAGE = pygame.Surface((TILE_SIZE,TILE_SIZE))
 DARK_IMAGE.fill(pygame.Color('darkgreen'))
 GREEN_IMAGE = pygame.Surface((TILE_SIZE,TILE_SIZE))
 GREEN_IMAGE.fill(pygame.Color('green'))
-
-image = pygame.image.load('char.png')
-image = pygame.transform.scale(image, (50, 75))
-
-person = cp.Player(image)
-people = pygame.sprite.Group()
-people.add(person)
-
 
 FIRE = pygame.image.load('Fire.png')
 COAL = pygame.image.load('Coal.png')

@@ -29,9 +29,9 @@ def get_resorces():
 def select_player():
     mouse_pos =  pygame.mouse.get_pos()
     for person in cc.people:
-        if person in cc.people.get_sprites_at(mouse_pos)
-        player = person
-    return person
+        if person in cc.people.get_sprites_at(mouse_pos):
+            player = person
+    return player
 
 def main():
     screen = pygame.display.set_mode((cc.SCREEN_SIZE, cc.SCREEN_SIZE))
